@@ -1,1 +1,62 @@
+= My Utility Scripts
+:author: Hugo
+:email: hugo@example.com
+:sectanchors:
+:toc: left
+:toclevels: 2
 
+This repository contains various utility scripts that I find useful for my development and server environments.
+
+== `ps1.sh` - Custom Bash Prompt Setup
+
+This script sets up a custom, colorful, and informative Bash prompt (`PS1`) designed for engineers. It displays the `username@hostname`, the current directory basename, and the current Git branch (if you're inside a Git repository).
+
+=== Features:
+
+*   *User & Hostname:* `username@hostname` in green.
+*   *Current Directory:* Basename of the working directory in blue/cyan.
+*   *Git Branch Display:* Shows `(branch-name)` in pink/purple when in a Git repository.
+*   *Two-Line Prompt:* Separates information from input for better readability.
+
+=== Deployment (One-Liner)
+
+To quickly apply this custom prompt to your Ubuntu (or compatible Bash) system, you can use the following one-liner. This command will download the `ps1.sh` script and pipe its content directly to `bash` for execution. It will append the `PS1` configuration to your `~/.bashrc` and then `source` it to apply immediately.
+
+[source,bash]
+----
+curl -fsSL https://raw.githubusercontent.com/Hugo2128/scripts/main/ps1.sh | bash
+----
+
+*What the script does:*
+
+. Appends the `export PS1="..."` configuration to your `~/.bashrc` file.
+. Sources (`. ~/.bashrc`) your `~/.bashrc` file to apply the new prompt configuration to your current shell session.
+
+=== Manual Installation (Recommended for Review)
+
+For those who prefer to inspect the script before execution (highly recommended for security best practices), you can download it first:
+
+[source,bash]
+----
+# 1. Download the script
+curl -fsSL https://raw.githubusercontent.com/Hugo2128/scripts/main/ps1.sh -o ps1.sh
+
+# 2. Review the script's content
+less ps1.sh
+# Or, if you prefer a graphical editor
+# nano ps1.sh
+# vi ps1.sh
+
+# 3. Execute the script if satisfied
+bash ps1.sh
+
+# 4. (Optional) Clean up the downloaded file
+rm ps1.sh
+----
+
+=== Preview
+
+Once installed, your prompt will look something like this:
+
+image::https://via.placeholder.com/600x60/000000/FFFFFF?text=username@hostname:current_dir+(main)%0A$+[]
+_Note: Replace with an actual screenshot of your prompt for best results._
